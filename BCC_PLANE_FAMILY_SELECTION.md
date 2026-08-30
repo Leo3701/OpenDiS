@@ -5,6 +5,18 @@ families. The whitelist applies to glissile `1/2<111>` segments while retaining
 all original `<100>` junction planes and the collision, topology, remeshing,
 cross-slip, and multiplication machinery.
 
+## Repository baseline
+
+The modified ExaDiS code is based on the official `nounified` branch at commit
+`203e3a5943f8da328732e2d2fdd99c6d1a68dd3c`. This baseline is required for the
+current WSL build and must not be replaced by the unified `main` branch.
+
+The strict BCC plane-family implementation is commit
+`5a88ad1869598a2eabe007d715d287edb3ee4189`, which is one commit directly on top
+of that `nounified` baseline. It also includes the upstream GPU `ForceFFT`
+complex-atomic fix by applying `atomic_add()` to the real component of each FFT
+grid value.
+
 ## Python interface
 
 Select exactly one family in the simulation `state` dictionary:
