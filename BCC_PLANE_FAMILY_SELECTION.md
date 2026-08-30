@@ -7,15 +7,17 @@ cross-slip, and multiplication machinery.
 
 ## Repository baseline
 
-The modified ExaDiS code is based on the official `nounified` branch at commit
-`203e3a5943f8da328732e2d2fdd99c6d1a68dd3c`. This baseline is required for the
-current WSL build and must not be replaced by the unified `main` branch.
+The modified ExaDiS code is based on the official unified `main` branch at
+commit `d550bc03ef76f1e9df7ceb29bc08f67e6ec189c5`. The integrated version is merge
+commit `a44ee062f32504bb5acb38800e06a095f1473a8a`, which combines the complete
+unified `main` history with the strict BCC plane-family implementation. It also
+includes the upstream GPU `ForceFFT` complex-atomic fix by applying
+`atomic_add()` to the real component of each FFT grid value.
 
-The strict BCC plane-family implementation is commit
-`5a88ad1869598a2eabe007d715d287edb3ee4189`, which is one commit directly on top
-of that `nounified` baseline. It also includes the upstream GPU `ForceFFT`
-complex-atomic fix by applying `atomic_add()` to the real component of each FFT
-grid value.
+The unified-memory baseline differs from the former `nounified` WSL baseline.
+Use a clean build directory when switching to this version; existing
+`nounified` build artifacts are not compatible and WSL/CUDA behavior must be
+validated for the local toolchain.
 
 ## Python interface
 
